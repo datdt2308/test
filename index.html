@@ -1,0 +1,256 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style/fullcalendar.css">
+<script src="jquery-min/jquery.min.js"></script>
+<script src="jquery-min/jquery-ui.min.js"></script>
+<script src="jquery-min/moment.min.js"></script>
+<script src="jquery-min/fullcalendar.js"></script>
+<style>
+    html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+  font-size: 14px;
+}
+
+#calendar {
+  max-width: 900px;
+  margin: 40px auto;
+}
+</style>
+</head>
+<body>
+<div id="calendar">
+</div>
+<button onclick="testCheck()">Click me!</button>
+</body>
+<script>
+    var today = new Date();
+    var newdate = new Date();
+    today.setDate(today.getDate());
+    // get today
+    var date = today.getDate();
+    var month = today.getMonth() + 1;
+    var year = today.getFullYear();
+    // full today;
+    var currentDay = year + '-' + month + '-' + date;
+    console.log(currentDay);
+    newdate.setDate(today.getDate() + 5);
+    // get date, month, fullyear of toDate
+    var dateTo = newdate.getDate();
+    var monthTo = newdate.getMonth() + 1;
+    var yeTo = newdate.getFullYear();
+    
+    //get enddate for system
+    var endDate = yeTo + '-' + monthTo + '-' + dateTo;
+    console.log(endDate);
+    
+    // get eventStartDate
+    var evtStartDate = new Date();
+    evtStartDate.setDate(today.getDate() - 1);
+    var dateEvt = evtStartDate.getDate();
+    var monthEvt = evtStartDate.getMonth() + 1;
+    var yeEvt = evtStartDate.getFullYear();
+    var eventStartDate = yeEvt + '-' + monthEvt + '-' + dateEvt;
+    console.log("evtStartDate: " + eventStartDate);
+    function getMonth(monthStr){
+        return new Date(monthStr+'-1-01').getMonth()+1
+    }
+    function convertDate(date){
+        var res = date.split(' ');
+        return res[5] + '-' + getMonth(res[1]) + '-' + res[2];
+    }
+
+    function testCheck(){
+        check = false;
+    }
+    var date = new Date();
+    var listMonth = "JanFebMarAprMayJunJulAugSepOctNovDec";
+    var str = 'Wed Oct 24 00:00:00 ICT 2018';
+    console.log(convertDate(str));
+
+    var check = true;
+    $(document).ready(function(){
+        if(check == false){
+            $('#calendar').fullCalendar({
+                defaultView: 'agendaDay',
+            });
+        }else{
+        $('#calendar').fullCalendar({
+        selectable: true,
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaDay'
+        },
+        dayClick: function(date) {
+            alert('clicked ' + date.format());
+        },
+        select: function(startDate, endDate) {
+            alert('selected ' + startDate.format() + ' to ' + endDate.format());
+        },
+        dayRender: function(date, cell){
+            if(date < evtStartDate){
+                cell.css('background-color', 'red');
+                console.log(date);
+            }
+        },
+        events: [
+        {
+            start: '2018-10-16',
+            end: '2018-10-20',
+            rendering: 'background',
+            color: '#8B2323' 
+        },
+        {
+            start: '2018-10-20',
+            end: '2018-11-25',
+            rendering: 'background',
+            color: '#000000' 
+        }
+        ]
+        });
+        }
+    });
+</script>
+</html>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style/fullcalendar.css">
+
+<script src="jquery-min/jquery.min.js"></script>
+<script src="jquery-min/jquery-ui.min.js"></script>
+<script src="jquery-min/moment.min.js"></script>
+<script src="jquery-min/fullcalendar.js"></script>
+
+
+<style>
+    html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+  font-size: 14px;
+}
+
+#calendar {
+  max-width: 900px;
+  margin: 40px auto;
+}
+</style>
+</head>
+<body>
+<div id="calendar">
+<ol>
+    <li>Doan</li>
+    <li>Dat</li>
+    <li>HoangViet</li>
+    <li>Loan</li>
+</ol>
+</div>
+</body>
+<script>
+    var check = false;
+    function getEvent(eventDate, events){
+        var result = {};
+        for(var i = 0; i < events.length; i++){
+            if(eventDate == events[i].start){
+                result = events[i];
+                break;
+            }else{
+                result = null;
+            }
+        }
+        return result;
+    }
+    var selectDateEvent = {};
+    var today = new Date();
+    var crrDay = (today.getDate() - 1);
+    var events = [
+        {   value: 10,
+            start: '2018-10-21',
+            rendering: 'background',
+            color: 'green'
+        },
+        {   value: 20,
+            start: '2018-10-22',
+            rendering: 'background',
+            color: 'orange'
+        },
+        {   value: 30,
+            start: '2018-10-23',
+            rendering: 'background',
+            color: 'yellow'
+        },
+    ];
+    if(check){
+        $(function() {
+        $('#calendar').fullCalendar({
+        selectable: true,
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaDay'
+        },
+        viewRender : function (view, element) {
+            console.log('new date range start : ', view.start.format(), 'new date range end : ',view.end.format());
+        },
+        dayRender: function(date, cell){
+            if(date < today){
+                cell.css('background-color', 'red');
+            }
+        },
+        events: events,
+        dayClick: function(date, jsEvent, view, event) {
+            selectDateEvent = getEvent(date.format(), events);
+            console.log(selectDateEvent);
+            console.log(date.format());
+            $(this).css('border-color', 'red');
+        }
+        });
+    });
+    }else{
+        //$('#calendar').fullCalendar( 'removeEventSource', events);
+        // $('#calendar').fullCalendar('changeView', 'agendaDay');
+        $('#calendar').fullCalendar({
+            defaultView: 'agendaDay',
+            groupByResource: true,
+            minTime: "06:00:00",
+            maxTime: "24:00:00",
+            allDay: false,
+            resources: [
+                { id: 1, title: 'Room A' },
+                { id: 2, title: 'Room B' },
+                { id: 3, title: 'Room C'},
+                { id: 4, title: 'Room D'}
+            ],
+            events: [
+                { id: '2', resourceId: 1, start: '2018-10-29T09:00:00', end: '2018-10-28T14:00:00', title: 'event 2'},
+                { id: '3', resourceId: 1, start: '2018-10-29T12:00:00', end: '2018-10-28T16:00:00', title: 'event 3'},
+                { id: '4', resourceId: 3, start: '2018-10-29T14:30:00', end: '2018-28-30T16:30:00', title: 'Fucking', color: 'orange'},          
+                { id: '3', resourceId: 2, start: '2018-10-29T12:00:00', end: '2018-10-28T17:15:15', title: 'event 3', color: 'red' },
+                { id: '3', resourceId: 3, start: '2018-10-9T12:00:00', end: '2018-10-28T17:15:15', title: 'event 3', color: 'blue' },
+
+            ],
+            eventClick: function(calEvent, jsEvent, view) {
+                alert('Event: ' + calEvent.title);
+                console.log('Event', calEvent.start);
+                console.log(calEvent);
+                // change the border color just for fun
+                $(this).css('border-color', 'red');
+
+            },
+            dayRender: function( date, cell ) { 
+                console.log(date);
+            },
+        });
+    }
+    
+</script>
+</html>
