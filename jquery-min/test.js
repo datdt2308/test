@@ -6,5 +6,5 @@ function test(){
 	} else {
 		result = "dat";
 	}
-	return result;
+	                              return result;	
 }
