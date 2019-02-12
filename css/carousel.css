@@ -1,0 +1,75 @@
+.carousel {
+	position: relative;
+	padding: 0 50px;
+}
+
+.carousel .carousel-window {
+	overflow: hidden;
+}
+
+.carousel .carousel-list {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.carousel .carousel-list.is-transition {
+	transition-property: transform;
+	transition-duration: 0.3s;
+}
+
+.carousel .carousel-list > * {
+	width: 100%;
+}
+
+.carousel .carousel-indicator-list {
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.carousel .carousel-indicator-list > li {
+	padding: 0 5px;
+}
+
+.carousel .carousel-indicator-list > li .carousel-indicator {
+	cursor: pointer;
+	display: block;
+	width: 10px;
+	height: 10px;
+	background-color: #DDDDDD;
+	border-radius: 50%;
+}
+
+.carousel .carousel-indicator-list > li .carousel-indicator.is-active {
+	background-color: red;
+}
+
+.carousel .carousel-button-list {
+	width: 100%;
+}
+
+.carousel .carousel-button-list > * {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translate(0, -50%);
+}
+
+.carousel .carousel-button-list > * + * {
+	left: auto;
+	right: 0;
+}
+
+.carousel .carousel-button-list .carousel-button {
+	display: flex;
+	width: 30px;
+	height: 30px;
+	color: #FFFFFF;
+	background-color: blue;
+	border-radius: 50%;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}

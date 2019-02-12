@@ -3,17 +3,29 @@
 <head>
 <title>Page Title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/carousel.css">
+<link rel="stylesheet" href="css/tabswitcher.css">
+<link rel="stylesheet" href="css/scrollAnimation.css">
+
+
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/moment.min.js"></script>
 <script src="js/pageTop.js"></script>
 <script src="js/jquery.easy.js"></script>
+<script src="js/carousel.js"></script>
+<script type="text/javascript" src="js/smoothScroll.js"></script>
+<script src="js/tabswitcher.js"></script>
+<script src="js/scrollAnimation.js"></script>
 
 </head>
 <body>
     <div class="jsc-pagetop"></div>
     <div class="jsc-content">
+        <section id = "smooth-scroll-target-1"> section 1 </section>
         <h1>test</h1>
+        <h4>this is topPage</h4>        
         <p>
             indent_style: set to tab or space to use hard tabs or soft tabs respectively.
 indent_size: a whole number defining the number of columns used for each indentation level and the width of soft tabs (when supported). When set to tab, the value of tab_width (if specified) will be used.
@@ -45,6 +57,7 @@ Currently all properties and values are case-insensitive. They are lowercased wh
 
 It is acceptable and often preferred to leave certain EditorConfig properties unspecified. For example, tab_width need not be specified unless it differs from the value of indent_size. Also, when indent_style is set to tab, it may be desirable to leave indent_size unspecified so readers may view the file using their preferred indentation width. Additionally, if a property is not standardized in your project (end_of_line for example), it may be best to leave it blank.
         </p>
+<section id = "smooth-scroll-target-2"> section 2 </section> 
         <p>
             indent_style: set to tab or space to use hard tabs or soft tabs respectively.
 indent_size: a whole number defining the number of columns used for each indentation level and the width of soft tabs (when supported). When set to tab, the value of tab_width (if specified) will be used.
@@ -151,16 +164,112 @@ Currently all properties and values are case-insensitive. They are lowercased wh
 It is acceptable and often preferred to leave certain EditorConfig properties unspecified. For example, tab_width need not be specified unless it differs from the value of indent_size. Also, when indent_style is set to tab, it may be desirable to leave indent_size unspecified so readers may view the file using their preferred indentation width. Additionally, if a property is not standardized in your project (end_of_line for example), it may be best to leave it blank.
         </p>
     </div>
-     <div class="jsc-pagetop">
-         <button>tiendat</button>
-     </div>
+<div class="jsc-pagetop">
+     <button>tiendat</button>
+</div>
+
+<!-- <div id="carousel1" style="height: 300px">
+        <div>
+            <img src="images/a.jpg">
+        </div>
+        <div>
+            <img src="images/aa.jpg">
+        </div>
+        <div>
+            <img src="images/aaa.jpg">
+        </div>
+        <div>
+            <img src="images/aaaa.jpg">
+        </div>
+    </div> -->
+
+<h4>this is smooth-sc</h4>
+<div class="jsc-smooth-scroll">
+     <a href="#smooth-scroll-target-1" id=" smooth-scroll-trigger-1"> Link1 </a>
+
+     <a href="#smooth-scroll-target-2" id=" smooth-scroll-trigger-1">Link2</a> 
+</div>
+
+<div id="tabswitcher" class="tabswitcher">
+      <ul class="jsc-tabswitcher-tabs tabswitcher-tabs">
+        <li><span class="tabswitcher-tab">タブ１</span></li>
+        <li><span class="tabswitcher-tab">タブ２</span></li>
+        <li><span class="tabswitcher-tab">タブ３</span></li>
+      </ul>
+      <ul class="jsc-tabswitcher-contents tabswitcher-contents">
+        <li class="tabswitcher-content">
+          <div>
+            コンテンツ１
+          </div>
+        </li>
+        <li class="tabswitcher-content">
+          <div>
+            コンテンツ２
+          </div>
+        </li>
+        <li class="tabswitcher-content">
+          <div>
+            コンテンツ３
+          </div>
+          </li>
+      </ul>
+</div>
+
+<div class="jsc-scroll-animation-wrapper">
+      <p class="jsc-scroll-animation-target">テキスト</p>
+      <p class="jsc-scroll-animation-target">テキスト</p>
+</div>
+
+
+<div class="jsc-scroll-animation-wrapper">
+      <p class="jsc-scroll-animation-target">テキスト</p>
+      <p class="jsc-scroll-animation-target">テキスト</p>
+</div>
+    
+</body>
 <script>
       $('.jsc-pagetop').pageTop(
         {
           duration: 1,
           easing: 'linear'
          }
-      );   
+      );
+      // $('#carousel1').carousel({
+      //     duration: 3,
+      //     auto: true,
+      //     //viewCount: 5,
+      //     //    spViewCount: 3,
+      //     //viewButton: true,
+      //     viewIndicator: true,
+      //     isSwipe: true,
+      //     breakpoint: 1000,
+      //     swipeOffset: 60
+      // });
+
+       $('#smooth-scroll-trigger-1').smoothScroll(
+        {
+          gid: 1,
+          offset: 30,
+          duration: 2 
+        }
+      );
+      $('#smooth-scroll-trigger-2').smoothScroll(
+        {
+          gid: 1,
+          offset: 30,
+          duration: 2 
+        }
+      );
+      $('#tabswitcher').tabSwicher();
+
+      $(window).on('load',function(){
+        $('.jsc-scroll-animation-wrapper').ScrollAnimation({
+            delay: 0.5,
+            animationDuration: 1.4,
+            easingType: 'cubic-bezier(0.075, 0.82, 0.165, 1)',
+            animationOffset: 3
+         });
+      });
+    </script>
 </script>    
-</body>
 </html>

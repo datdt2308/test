@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* ScrollAnimation */
+.jsc-scroll-animation-target {
+  transform: translateY(50px);
+  opacity: 0;
+  transition-property: transform,opacity;
+
+}
+
+.jsc-scroll-animation-target.is-over {
+  transform: translate(0, 0);
+  opacity: 1;
+}

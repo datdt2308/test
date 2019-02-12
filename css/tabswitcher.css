@@ -1,0 +1,52 @@
+/* tabswitcher - tabs*/
+.tabswitcher .tabswitcher-tabs {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	flex-wrap: nowrap;
+	overflow-x: scroll;
+
+}
+
+.tabswitcher .tabswitcher-tabs > li {
+	padding: 0 5px;
+	line-height: 1;
+}
+
+.tabswitcher .tabswitcher-tabs > li:first-child {
+	padding-left: 0;
+}
+
+.xtabswitcher .tabswitcher-tabs > li:last-child {
+	padding-right: 0;
+}
+
+.tabswitcher .tabswitcher-tabs .tabswitcher-tab {
+	cursor: pointer;
+	display: block;
+	padding: 5px 10px;
+	border: 1px solid #333333;
+	border-bottom: none;
+	white-space: nowrap;
+}
+
+.tabswitcher .tabswitcher-tabs > li.is-active .tabswitcher-tab {
+	color: #FFFFFF;
+	background-color: #333333;
+}
+
+
+/* tabswitcher - contents*/
+.tabswitcher .tabswitcher-contents {
+	padding: 10px;
+	border: 1px solid #333333;
+}
+
+.tabswitcher .tabswitcher-contents .tabswitcher-content {
+	display: none;
+}
+
+.tabswitcher .tabswitcher-contents .tabswitcher-content.is-active {
+	display: block;
+}
