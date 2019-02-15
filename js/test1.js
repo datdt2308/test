@@ -8,4 +8,6 @@ function test(){
 		result = "dat";
 	}
 	return result;	
+	//abcdef
+	//abcd
 }
